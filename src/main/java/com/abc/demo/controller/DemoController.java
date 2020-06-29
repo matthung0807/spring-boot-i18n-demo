@@ -15,10 +15,10 @@ public class DemoController {
 
     @GetMapping("/message")
     public void message() {
-        String s1 = messageSource.getMessage("demo.simple", null, Locale.ENGLISH);
+        String s1 = messageSource.getMessage("demo.message", null, Locale.ENGLISH);
         System.out.println(s1); // A simple message
 
-        String s2 = messageSource.getMessage("demo.simple.args", new String[]{"hello", "world"}, Locale.ENGLISH);
+        String s2 = messageSource.getMessage("demo.message.args", new String[]{"hello", "world"}, Locale.TAIWAN);
         System.out.println(s2); // A message with args, arg_0=hello, arg_1=world
     }
 }

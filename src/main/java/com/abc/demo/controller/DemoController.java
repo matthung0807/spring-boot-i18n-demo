@@ -14,9 +14,11 @@ public class DemoController {
     private MessageSource messageSource;
 
     @GetMapping("/message")
-    public String message() {
-        String message = messageSource.getMessage("demo.simple", null, Locale.ENGLISH);
-        System.out.println(message);
-        return message;
+    public void message() {
+        String s1 = messageSource.getMessage("demo.simple", null, Locale.ENGLISH);
+        System.out.println(s1); // A simple message
+
+        String s2 = messageSource.getMessage("demo.simple.args", new String[]{"hello", "world"}, Locale.ENGLISH);
+        System.out.println(s2); // A message with args, arg_0=hello, arg_1=world
     }
 }

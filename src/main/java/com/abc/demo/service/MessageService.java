@@ -6,6 +6,7 @@ import com.abc.demo.entity.Message;
 import com.abc.demo.repository.LanguageRepository;
 import com.abc.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ import java.util.Locale;
 
 @Service
 public class MessageService {
+
+    @Value("${demo.default.language-tag}")
+    private String defaultLauageTag;
 
     @Autowired
     MessageSource messageSource;
@@ -28,15 +32,21 @@ public class MessageService {
     private MessageRepository messageRepository;
 
     public String getMessage(ResState resState) {
-        String tag = (String) httpSession.getAttribute("languageTag");
+        String languageTag = (String) httpSession.getAttribute("languageTag");
 
-        Long languageId = languageRepository.findByTag(tag)
+        Long languageId = languageRepository.findByTag(languageTag)
                 .map(Language::getId).orElse(0L);
+
+        if (languageId == 0) {
+            return messageSource.getMessage(resState.getMessageKey(), null, Locale.forLanguageTag(defaultLauageTag));
+        }
 
         return messageRepository.findByLanguageIdAndKey(languageId, resState.getMessageKey())
                 .map(Message::getMessage)
-                .orElseGet(() -> messageSource.getMessage(resState.getMessageKey(),
-                        null, Locale.forLanguageTag(tag)));
+                .orElseGet(() ->
+                        messageSource.getMessage(resState.getMessageKey(),
+                        null,
+                        Locale.forLanguageTag(languageTag)));
     }
 
 }

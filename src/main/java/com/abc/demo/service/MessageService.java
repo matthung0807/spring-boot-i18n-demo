@@ -20,7 +20,7 @@ public class MessageService {
     private String defaultLauageTag;
 
     @Autowired
-    MessageSource messageSource;
+    private MessageSource messageSource;
 
     @Autowired
     private HttpSession httpSession;

@@ -15,7 +15,7 @@ public class DemoController {
     public DemoResponse message(HttpSession httpSession, @PathVariable String languageTag) {
         httpSession.setAttribute("languageTag", languageTag);
 
-        return DemoResponse.error(ResState.SUCCESS);
+        return DemoResponse.state(ResState.SUCCESS);
 
     }
 }

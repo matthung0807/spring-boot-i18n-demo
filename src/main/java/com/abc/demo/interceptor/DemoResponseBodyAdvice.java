@@ -4,7 +4,6 @@ import com.abc.demo.controller.dto.res.DemoResponse;
 import com.abc.demo.controller.dto.res.ResState;
 import com.abc.demo.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -18,9 +17,6 @@ public class DemoResponseBodyAdvice implements ResponseBodyAdvice<DemoResponse> 
 
     @Autowired
     private MessageService messageService;
-
-    @Autowired
-    private MessageSource messageSource;
 
     @Override
     public boolean supports(

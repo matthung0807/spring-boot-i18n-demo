@@ -31,10 +31,10 @@ public class DemoController {
 
         messageSource.clearCache();
 
-        Properties messagesProperties = messageSource.getPropertiesByFileName("classpath:messages");
+        Properties messagesProperties = messageSource.getProperties(Locale.ENGLISH);
         messagesProperties.setProperty("demo.message", "ReloadableResourceBundleMessageSource example");
 
-        Properties messagesZhTwProperties = messageSource.getPropertiesByFileName("classpath:messages_zh_TW");
+        Properties messagesZhTwProperties = messageSource.getProperties(Locale.TAIWAN);
         messagesZhTwProperties.setProperty("demo.message", "ReloadableResourceBundleMessageSource 範例");
 
     }

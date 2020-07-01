@@ -9,7 +9,7 @@ import java.util.Properties;
 public class DemoReloadableResourceBundleMessageSource extends ReloadableResourceBundleMessageSource {
 
     public Properties getPropertiesByFileName(String fileName) {
-        return super.getProperties(fileName).getProperties(); // 公開 ReloadableResourceBundleMessageSource.getProperties()
+        return super.getProperties(fileName).getProperties();
     }
 
 }

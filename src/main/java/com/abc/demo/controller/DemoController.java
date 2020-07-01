@@ -53,5 +53,5 @@ public class DemoController {
         String s4 = messageSource.getMessage("demo.hello-world", null, Locale.TAIWAN);
         System.out.println(s4); // 哈囉世界
     }
-    
+
 }

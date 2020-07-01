@@ -11,16 +11,16 @@ import java.nio.charset.StandardCharsets;
 @SpringBootApplication
 public class DemoApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-	}
+    }
 
-	@Bean
-	public MessageSource messageSource() {
-		DemoReloadableResourceBundleMessageSource messageSource = new DemoReloadableResourceBundleMessageSource();
-		messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
-		messageSource.setBasename("classpath:messages");
-		return messageSource;
-	}
+    @Bean
+    public MessageSource messageSource() {
+        DemoReloadableResourceBundleMessageSource messageSource = new DemoReloadableResourceBundleMessageSource();
+        messageSource.setDefaultEncoding(StandardCharsets.UTF_8.name());
+        messageSource.setBasename("classpath:messages");
+        return messageSource;
+    }
 
 }

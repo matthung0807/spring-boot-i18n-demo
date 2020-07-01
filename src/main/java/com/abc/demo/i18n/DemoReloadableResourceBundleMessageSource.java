@@ -11,18 +11,13 @@ import java.util.stream.Collectors;
 @Component
 public class DemoReloadableResourceBundleMessageSource extends ReloadableResourceBundleMessageSource {
 
-    public Properties getPropertiesByFileName(String fileName) {
-        return getProperties(fileName).getProperties();
-    }
-
     public Properties getProperties(Locale locale) {
         return getMergedProperties(locale).getProperties();
     }
 
-    public Set<String> getPropertiesKeySet(Locale locale) {
-        return getProperties(locale).keySet().stream()
-                .map(Object::toString)
-                .collect(Collectors.toSet());
+    public void updateProperties(Locale locale, String key, String value) {
+        Properties properties = getProperties(locale);
+        properties.setProperty(key, value);
     }
 
 }

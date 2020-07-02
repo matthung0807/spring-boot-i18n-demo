@@ -14,8 +14,6 @@ public class DemoApplicationStartedEventListener implements ApplicationListener<
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-
         messageService.updateAllMessagePropertiesFromDatabase();
-
     }
 }

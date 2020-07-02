@@ -26,4 +26,5 @@ public class Message {
     private String key;
 
     private String message;
+
 }

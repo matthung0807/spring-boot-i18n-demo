@@ -45,9 +45,7 @@ public class DemoController {
 
     @PostMapping("/message/update")
     public void updateMessage(@RequestBody UpdateMessageDto updateMessageDto) {
-
         messageService.updateMessageProperties(updateMessageDto);
-
     }
 
 }

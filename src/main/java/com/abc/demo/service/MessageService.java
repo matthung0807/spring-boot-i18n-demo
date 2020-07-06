@@ -9,8 +9,8 @@ import com.abc.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MessageService {
@@ -24,8 +24,11 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public Set<String> getPropertiesKeySet(Locale locale) {
-        return messageSource.getPropertiesKeySet(locale);
+    public List<KeyValue<String, String>> getProperties(Locale locale) {
+        Properties properties = messageSource.getProperties(locale);
+        return properties.entrySet().stream().map((k) -> new KeyValue<>((String) k.getKey(), (String) k.getValue()))
+                .sorted(Comparator.comparing(KeyValue::getKey))
+                .collect(Collectors.toList());
     }
 
     public void updateAllMessagePropertiesFromDatabase() {

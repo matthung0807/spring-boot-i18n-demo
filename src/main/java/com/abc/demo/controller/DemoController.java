@@ -1,5 +1,6 @@
 package com.abc.demo.controller;
 
+import com.abc.demo.controller.req.KeyValue;
 import com.abc.demo.controller.req.UpdateMessageDto;
 import com.abc.demo.i18n.DemoReloadableResourceBundleMessageSource;
 import com.abc.demo.service.MessageService;
@@ -38,9 +39,8 @@ public class DemoController {
     }
 
     @GetMapping("/message/{languageTag}")
-    public List<String> getPropertiesKeyList(@PathVariable String languageTag) {
-        Set<String> propertiesKeySet = messageService.getPropertiesKeySet(Locale.forLanguageTag(languageTag));
-        return new ArrayList<>(propertiesKeySet);
+    public List<KeyValue<String, String>> getProperties(@PathVariable String languageTag) {
+        return messageService.getProperties(Locale.forLanguageTag(languageTag));
     }
 
     @PostMapping("/message/update")

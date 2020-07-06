@@ -15,13 +15,6 @@ public class DemoReloadableResourceBundleMessageSource extends ReloadableResourc
         return getMergedProperties(locale).getProperties();
     }
 
-    public Set<String> getPropertiesKeySet(Locale locale) {
-        Properties properties = getProperties(locale);
-        return properties.keySet().stream()
-                .map(Object::toString)
-                .collect(Collectors.toSet());
-    }
-
     public void updateProperty(Locale locale, String key, String value) {
         Properties properties = getProperties(locale);
         properties.setProperty(key, value);
